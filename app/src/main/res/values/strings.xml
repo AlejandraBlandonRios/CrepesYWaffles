@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Crepes&amp;Waffles</string>
+    <string name="MiPerfil1">MiPerfil</string>
+    <string name="Principal1">Principal</string>
+    <string name="Usuaria">Alejandra</string>
+    <string name="NA">No</string>
+    <string name="Correo1">Correo</string>
+    <string name="Usuario1">Usuario</string>
+    <string name="Bienvenido1">Bienvenido a </string>
+    <string name="Bienvenido2">Crepes&amp;Waffles</string>
+    <string name="Nombre1">Nombre de usuario</string>
+    <string name="Ingrese1">Ingrese el nombre de Usuario:</string>
+    <string name="Ingrese2">Ingrese su contraseña:</string>
+    <string name="Contraseña1">Contraseña</string>
+    <string name="Aceptar1">Aceptar</string>
+    <string name="Registrarse1">Registrarse</string>
+    <string name="Titulo">FORMULARIO DE REGISTRO</string>
+    <string name="Contraseña2">Ingrese nuevamente su contraseña</string>
+    <string name="Correo2">Ingrese su correo electrónico</string>
+    <string name="Cancelar1">Cancelar</string>
+    <string name="Titulo2">DATOS DEL REGISTRO</string>
+    <string name="Usuario2">El nombre de usuario registrado es:</string>
+    <string name="Contraseña3">La contraseña registrada es:</string>
+    <string name="Correo3">El correo registrado es:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Fragmento1">Logotipo</string>
+    <string name="Fragmento2">Productos</string>
+</resources>
