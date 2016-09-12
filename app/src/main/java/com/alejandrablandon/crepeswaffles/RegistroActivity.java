@@ -21,6 +21,7 @@ public class RegistroActivity extends AppCompatActivity {
         eNombre=(EditText)findViewById(R.id.eNombre);
         eContraseña1=(EditText)findViewById(R.id.eContraseña1);
         eContraseña2=(EditText)findViewById(R.id.eContraseña2);
+        eCorreo=(EditText)findViewById(R.id.eCorreo);
         bAceptar=(Button)findViewById(R.id.bAceptar);
         bCancelar=(Button)findViewById(R.id.bCancelar);
 
@@ -39,6 +40,7 @@ public class RegistroActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.putExtra("usuario", eNombre.getText().toString());
                     intent.putExtra("contrasena", eContraseña1.getText().toString());
+                    intent.putExtra("correo",eCorreo.getText().toString());
                     setResult(RESULT_OK, intent);
                     finish();
                 }

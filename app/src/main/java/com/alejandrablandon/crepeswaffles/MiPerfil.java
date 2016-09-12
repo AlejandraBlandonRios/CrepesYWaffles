@@ -5,22 +5,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MiPerfil extends AppCompatActivity {
 
-    String resultado;
+    String usuario1,contrasena1,correo1;
+    TextView tUsuario,tContrasena,tCorreo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loggin);
+        setContentView(R.layout.activity_mi_perfil);
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
-        finish();
-        Bundle extras=getIntent().getExtras();
-        resultado=(String)extras.get("nombre");
+
+        tUsuario=(TextView)findViewById(R.id.tUsuario);
+        tContrasena=(TextView)findViewById(R.id.tContrasena);
+        tCorreo=(TextView)findViewById(R.id.tCorreo);
+
+        usuario1=getIntent().getExtras().getString("usuario1");
+        contrasena1=getIntent().getExtras().getString("contrasena1");
+        correo1=getIntent().getExtras().getString("correo1");
+
+        tUsuario.setText(usuario1);
+        tContrasena.setText(contrasena1);
+        tCorreo.setText(correo1);
+        //Intent intent = new Intent();
+        //setResult(RESULT_OK, intent);
+        //finish();
+        //Bundle extras=getIntent().getExtras();
+        //resultado=(String)extras.get("nombre");
         //tName.setText(extras.getString("Nombre:"));
         //Intent intent=new Intent(this,MainActivity.class);
         //eName.setText(resultado);
@@ -39,6 +56,9 @@ public class MiPerfil extends AppCompatActivity {
 
                 break;
             case R.id.mPrincipal:
+                //Intent intent = new Intent();
+                //setResult(RESULT_OK, intent);
+                //finish();
                 Intent intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
                 break;

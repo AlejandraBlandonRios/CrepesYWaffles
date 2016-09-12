@@ -14,8 +14,7 @@ public class LogginActivity extends AppCompatActivity {
 
     EditText eName,eContraseña;
     Button bAceptar,bRegistro;
-    int banderita;
-    String user,contrasena;
+    String user,contrasena,correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +35,13 @@ public class LogginActivity extends AppCompatActivity {
                 } else if (eContraseña.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Falta ingresar el correo", Toast.LENGTH_LONG).show();
                 } else if ((eName.getText().toString()).equals(user)==true){
-                    Toast.makeText(getApplicationContext(), "Hola", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                     Intent intento=new Intent(getApplicationContext(),MainActivity.class);
-                    startActivityForResult(intento,123);
+                    intento.putExtra("usuario", user);
+                    intento.putExtra("contrasena", contrasena);
+                    intento.putExtra("correo", correo);
+                    Toast.makeText(getApplicationContext(), "Ingreso a mi perfil"+user,Toast.LENGTH_SHORT).show();
+                    startActivity(intento);
                 } else{
                     Toast.makeText(getApplicationContext(), "Falta registrarse", Toast.LENGTH_LONG).show();
                 }
@@ -56,6 +59,7 @@ public class LogginActivity extends AppCompatActivity {
         if (requestCode == 1234 && resultCode == RESULT_OK) {
             user = data.getExtras().getString("usuario");
             contrasena = data.getExtras().getString("contrasena");
+            correo = data.getExtras().getString("correo");
             //Log.d("user", user);
             //Log.d("contraseña", contrasena);
             Toast.makeText(this, "user: "+user+" contraseña: "+contrasena,Toast.LENGTH_SHORT).show();

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -23,16 +24,23 @@ import layout.LogoFragment;
 public class MainActivity extends AppCompatActivity {
 
     //private ViewPager;
-    String dato;
-    TextView tNombre,tCorreo;
-    Button bAceptar;
+    String user,contrasena,correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bAceptar=(Button)findViewById(R.id.bAcepto);
+
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+
+        user=getIntent().getExtras().getString("usuario");
+        contrasena=getIntent().getExtras().getString("contrasena");
+        correo=getIntent().getExtras().getString("correo");
+        Toast.makeText(this, "Ingreso a main pero sin perfil"+user+contrasena+correo,Toast.LENGTH_SHORT).show();
+
+
         // FragmentManager logo=new getFragmentManager();
         //LogoFragment logoFragment=new LogoFragment();
         //FragmentAdapter fragmentAdapter=new PagerAdapter(getSupportFragment);
@@ -82,18 +90,32 @@ public class MainActivity extends AppCompatActivity {
         //FragmentTransaction ft=fm.beginTransaction();
         switch (id){
             case R.id.mMiperfil:
-                Intent intent=new Intent(this,MiPerfil.class);
-                //dato=tNombre.getText().toString();
-                //intent.putExtra("nombre",dato);
-                startActivityForResult(intent,123);
-                //setResult(RESULT_OK,intent);
+                //Intent intent = new Intent();
+                //setResult(RESULT_OK, intent);
+                //finish();
+                /*Intent intent = new Intent();
+                intent.putExtra("usuario", eNombre.getText().toString());
+                intent.putExtra("contrasena", eContraseña1.getText().toString());
+                intent.putExtra("correo",eCorreo.getText().toString());
+                setResult(RESULT_OK, intent);
+                finish();*/
+                //setResult(RESULT_OK, intent);
+                //finish();
+                Toast.makeText(this, "Ingreso a mi perfil"+user,Toast.LENGTH_SHORT).show();
+                Intent intento=new Intent(this,MiPerfil.class);
+                //startActivity(intento);
+                //startActivityForResult(intento,12345);
+                intento.putExtra("usuario1", user);
+                intento.putExtra("contrasena1", contrasena);
+                intento.putExtra("correo1", correo);
+                startActivity(intento);
+                finish();
                 break;
             case R.id.mPrincipal:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
