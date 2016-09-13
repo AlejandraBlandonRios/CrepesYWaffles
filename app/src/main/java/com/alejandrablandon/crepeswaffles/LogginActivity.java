@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class LogginActivity extends AppCompatActivity {
@@ -35,12 +34,11 @@ public class LogginActivity extends AppCompatActivity {
                 } else if (eContraseña.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Falta ingresar el correo", Toast.LENGTH_LONG).show();
                 } else if ((eName.getText().toString()).equals(user)==true){
-                    //Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                     Intent intento=new Intent(getApplicationContext(),MainActivity.class);
                     intento.putExtra("usuario", user);
                     intento.putExtra("contrasena", contrasena);
                     intento.putExtra("correo", correo);
-                    Toast.makeText(getApplicationContext(), "Ingreso a mi perfil"+user,Toast.LENGTH_SHORT).show();
                     startActivity(intento);
                 } else{
                     Toast.makeText(getApplicationContext(), "Falta registrarse", Toast.LENGTH_LONG).show();
@@ -60,12 +58,12 @@ public class LogginActivity extends AppCompatActivity {
             user = data.getExtras().getString("usuario");
             contrasena = data.getExtras().getString("contrasena");
             correo = data.getExtras().getString("correo");
-            //Log.d("user", user);
-            //Log.d("contraseña", contrasena);
-            Toast.makeText(this, "user: "+user+" contraseña: "+contrasena,Toast.LENGTH_SHORT).show();
+            Log.d("user", user);
+            Log.d("contraseña", contrasena);
+            Log.d("correo",correo);
         }
         if (requestCode == 1234 && resultCode == RESULT_CANCELED) {
-            //Log.d("mensaje", "no se cargaron datos");
+            Log.d("mensaje", "no se cargaron datos");
             Toast.makeText(this, "No se cargaron los datos",Toast.LENGTH_SHORT).show();
         }
     }

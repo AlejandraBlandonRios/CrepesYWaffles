@@ -5,10 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MiPerfil extends AppCompatActivity {
 
@@ -18,9 +15,6 @@ public class MiPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
-
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
 
         tUsuario=(TextView)findViewById(R.id.tUsuario);
         tContrasena=(TextView)findViewById(R.id.tContrasena);
@@ -33,15 +27,6 @@ public class MiPerfil extends AppCompatActivity {
         tUsuario.setText(usuario1);
         tContrasena.setText(contrasena1);
         tCorreo.setText(correo1);
-        //Intent intent = new Intent();
-        //setResult(RESULT_OK, intent);
-        //finish();
-        //Bundle extras=getIntent().getExtras();
-        //resultado=(String)extras.get("nombre");
-        //tName.setText(extras.getString("Nombre:"));
-        //Intent intent=new Intent(this,MainActivity.class);
-        //eName.setText(resultado);
-        //startActivity(intent);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -56,11 +41,12 @@ public class MiPerfil extends AppCompatActivity {
 
                 break;
             case R.id.mPrincipal:
-                //Intent intent = new Intent();
-                //setResult(RESULT_OK, intent);
-                //finish();
                 Intent intent=new Intent(this,MainActivity.class);
+                intent.putExtra("usuario", usuario1);
+                intent.putExtra("contrasena", contrasena1);
+                intent.putExtra("correo", correo1);
                 startActivity(intent);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
