@@ -32,8 +32,8 @@ public class LogginActivity extends AppCompatActivity {
                     eContraseña.setText("");
                     Toast.makeText(getApplicationContext(), "Falta ingresar el nombre", Toast.LENGTH_LONG).show();
                 } else if (eContraseña.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Falta ingresar el correo", Toast.LENGTH_LONG).show();
-                } else if ((eName.getText().toString()).equals(user)==true){
+                    Toast.makeText(getApplicationContext(), "Falta ingresar la contrasena", Toast.LENGTH_LONG).show();
+                } else if ((eName.getText().toString()).equals(user)==true && (eContraseña.getText().toString()).equals(contrasena)){
                     Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                     Intent intento=new Intent(getApplicationContext(),MainActivity.class);
                     intento.putExtra("usuario", user);
@@ -41,7 +41,7 @@ public class LogginActivity extends AppCompatActivity {
                     intento.putExtra("correo", correo);
                     startActivity(intento);
                 } else{
-                    Toast.makeText(getApplicationContext(), "Falta registrarse", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Falta registrarse o datos erróneos", Toast.LENGTH_LONG).show();
                 }
             }
         });

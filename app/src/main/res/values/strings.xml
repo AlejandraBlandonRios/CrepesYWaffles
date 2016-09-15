@@ -2,6 +2,7 @@
     <string name="app_name">Crepes&amp;Waffles</string>
     <string name="MiPerfil1">MiPerfil</string>
     <string name="Principal1">Principal</string>
+    <string name="Fragmentos1">Ofertas</string>
     <string name="Usuaria">Alejandra</string>
     <string name="NA">No</string>
     <string name="Correo1">Correo</string>
@@ -14,7 +15,7 @@
     <string name="Contraseña1">Contraseña</string>
     <string name="Aceptar1">Aceptar</string>
     <string name="Registrarse1">Registrarse</string>
-    <string name="Titulo">FORMULARIO DE REGISTRO</string>
+    <string name="Titulo">REGISTRO</string>
     <string name="Contraseña2">Ingrese nuevamente su contraseña</string>
     <string name="Correo2">Ingrese su correo electrónico</string>
     <string name="Cancelar1">Cancelar</string>

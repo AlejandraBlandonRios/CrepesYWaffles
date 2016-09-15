@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MiPerfil extends AppCompatActivity {
 
-    String usuario1,contrasena1,correo1;
+    String usuario,contrasena,correo;
     TextView tUsuario,tContrasena,tCorreo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,13 @@ public class MiPerfil extends AppCompatActivity {
         tContrasena=(TextView)findViewById(R.id.tContrasena);
         tCorreo=(TextView)findViewById(R.id.tCorreo);
 
-        usuario1=getIntent().getExtras().getString("usuario1");
-        contrasena1=getIntent().getExtras().getString("contrasena1");
-        correo1=getIntent().getExtras().getString("correo1");
+        usuario=getIntent().getExtras().getString("usuario");
+        contrasena=getIntent().getExtras().getString("contrasena");
+        correo=getIntent().getExtras().getString("correo");
 
-        tUsuario.setText(usuario1);
-        tContrasena.setText(contrasena1);
-        tCorreo.setText(correo1);
+        tUsuario.setText(usuario);
+        tContrasena.setText(contrasena);
+        tCorreo.setText(correo);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -42,10 +42,18 @@ public class MiPerfil extends AppCompatActivity {
                 break;
             case R.id.mPrincipal:
                 Intent intent=new Intent(this,MainActivity.class);
-                intent.putExtra("usuario", usuario1);
-                intent.putExtra("contrasena", contrasena1);
-                intent.putExtra("correo", correo1);
+                intent.putExtra("usuario", usuario);
+                intent.putExtra("contrasena", contrasena);
+                intent.putExtra("correo", correo);
                 startActivity(intent);
+                finish();
+                break;
+            case R.id.mOferta_Frag:
+                Intent intento1=new Intent(this,FragmentosActivity.class);
+                intento1.putExtra("usuario", usuario);
+                intento1.putExtra("contrasena", contrasena);
+                intento1.putExtra("correo", correo);
+                startActivity(intento1);
                 finish();
                 break;
         }

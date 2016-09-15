@@ -37,13 +37,21 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.mMiperfil:
                 Intent intento=new Intent(this,MiPerfil.class);
-                intento.putExtra("usuario1", user);
-                intento.putExtra("contrasena1", contrasena);
-                intento.putExtra("correo1", correo);
+                intento.putExtra("usuario", user);
+                intento.putExtra("contrasena", contrasena);
+                intento.putExtra("correo", correo);
                 startActivity(intento);
                 finish();
                 break;
             case R.id.mPrincipal:
+                break;
+            case R.id.mOferta_Frag:
+                Intent intento1=new Intent(this,FragmentosActivity.class);
+                intento1.putExtra("usuario", user);
+                intento1.putExtra("contrasena", contrasena);
+                intento1.putExtra("correo", correo);
+                startActivity(intento1);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -51,3 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+
+
+
