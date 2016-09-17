@@ -27,13 +27,3 @@ public class Producto1Fragment extends Fragment {
     }
 
 }
-
-
-
-
-
-
-
-
-
-

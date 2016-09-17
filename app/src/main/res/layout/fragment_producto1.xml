@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/brown"
+    android:background="@color/white"
     tools:context="com.alejandrablandon.crepeswaffles.Producto1Fragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,7 +13,7 @@
         android:textSize="40sp"
         android:text="@string/Fragmento2"
         android:gravity="center"
-        android:textColor="@color/white"/>
+        android:textColor="@color/brown"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

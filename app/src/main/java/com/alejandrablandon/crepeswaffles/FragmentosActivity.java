@@ -77,13 +77,14 @@ public class FragmentosActivity extends AppCompatActivity {
             switch (position){
                 case 0: return new LogoFragment();
                 case 1: return new Producto1Fragment();
+                case 2: return new BebidasFragment();
                 default: return null;
             }
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 
@@ -119,20 +120,3 @@ public class FragmentosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
