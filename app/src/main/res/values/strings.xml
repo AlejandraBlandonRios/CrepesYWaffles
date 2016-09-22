@@ -2,7 +2,7 @@
     <string name="app_name">Crepes&amp;Waffles</string>
     <string name="MiPerfil1">MiPerfil</string>
     <string name="Principal1">Principal</string>
-    <string name="Fragmentos1">Ofertas</string>
+    <string name="Fragmentos1">Momentos</string>
     <string name="Usuaria">Alejandra</string>
     <string name="NA">No</string>
     <string name="Correo1">Correo</string>
@@ -27,6 +27,10 @@
     <string name="Almuerzo1">Almuerzos</string>
     <string name="Desayuno1">Desayunos</string>
     <string name="Helado1">Helados</string>
+    <string name="Promo1">Sabores</string>
+    <string name="Sal1">Sal</string>
+    <string name="Dulce1">Dulce</string>
+    <string name="Bebida1">Bebidas</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -35,10 +39,19 @@
     <string name="Almuerzo">Almuerzo/Cena</string>
     <string name="Desayuno">Brunch/Desayuno</string>
     <string name="Helado">Helados</string>
+    <string name="Salado">Crepes de sal</string>
+    <string name="Dulce">Waffles dulces</string>
+    <string name="Bebidas"> Bebidas dulces</string>
     <string name="Texto1Almuerzo1"> Crepe de Roastbeef:</string>
     <string name="Texto2Almuerzo1"> El roastbeef tradición de la cocina inglesa, es un corte de carne asado al horno disfrútalo en nuestro menú Sueños acompañado de queso, ají panka, regula, cebollas caramelizadas y el chucrut de cebolla armando una fantasía de sabor.</string>
     <string name="Texto1Desayuno1"> Bowl de Açaí:</string>
     <string name="Texto2Desayuno1"> Es de color morado oscuro, redondo, en promedio tiene unos 10mm de diámetro y es llamada la “súper fruta” porque contiene grandes cantidades de vitamina C, calcio, hierro, ácido aspártico y glutámico y 16 aminoácidos. Un aliado ideal para tu cuidado.</string>
     <string name="Texto1Helado1"> Tiramisú</string>
     <string name="Texto2Helado1"> Desde Italia llega con su imponente combinación de sabores que juegan con el placer y el disfrute. Deleitarte, complacerte y regalarte el arte del sabor es nuestra principal inspiración.</string>
+    <string name="Texto1Sal1"> Rollos: </string>
+    <string name="Texto2Sal1"> Rollitos de salmón ahumado con rúgula, queso crema, cebolla, aguacate y crujientes vegetales frescos acompañados de ensalada verde.</string>
+    <string name="Texto1Dulce1"> Nutella</string>
+    <string name="Texto2Dulce1"> NUTELLA y tajaditas de banano fresco crema chantilly y helado de vainilla old style.</string>
+    <string name="Texto1Bebida1"> Choco nutella</string>
+    <string name="Texto2Bebida1"> Para los amantes del chocolate un intenso placer dominado por el sabor original de la Nutella.</string>
 </resources>

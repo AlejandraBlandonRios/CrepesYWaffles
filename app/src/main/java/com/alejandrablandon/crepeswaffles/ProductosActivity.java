@@ -52,6 +52,14 @@ public class ProductosActivity extends AppCompatActivity {
                 startActivity(intento1);
                 finish();
                 break;
+            case R.id.mPromo_Frag:
+                Intent intent=new Intent(this,OfertasActivity.class);
+                intent.putExtra("usuario", user);
+                intent.putExtra("contrasena", contrasena);
+                intent.putExtra("correo", correo);
+                startActivity(intent);
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

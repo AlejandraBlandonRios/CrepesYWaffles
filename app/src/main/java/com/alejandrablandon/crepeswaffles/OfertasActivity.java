@@ -1,7 +1,6 @@
 package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,15 +12,14 @@ import android.view.MenuItem;
 
 import layout.LogoFragment;
 
-public class FragmentosActivity extends AppCompatActivity {
+public class OfertasActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     String user,contrasena,correo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragmentos);
+        setContentView(R.layout.activity_ofertas);
 
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
@@ -29,7 +27,7 @@ public class FragmentosActivity extends AppCompatActivity {
 
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.pag_fragmentos);
+        mViewPager = (ViewPager) findViewById(R.id.pag_ofertas);
         mViewPager.setAdapter(pagerAdapter);
 
         ActionBar actionBar = getSupportActionBar();
@@ -49,11 +47,11 @@ public class FragmentosActivity extends AppCompatActivity {
 
             }
         };
-        ActionBar.Tab tab = actionBar.newTab().setText(R.string.Almuerzo1).setTabListener(tabListener);
+        ActionBar.Tab tab = actionBar.newTab().setText(R.string.Sal1).setTabListener(tabListener);
         actionBar.addTab(tab);
-        tab = actionBar.newTab().setText(R.string.Desayuno1).setTabListener(tabListener);
+        tab = actionBar.newTab().setText(R.string.Dulce1).setTabListener(tabListener);
         actionBar.addTab(tab);
-        tab = actionBar.newTab().setText(R.string.Helado1).setTabListener(tabListener);
+        tab = actionBar.newTab().setText(R.string.Bebida1).setTabListener(tabListener);
         actionBar.addTab(tab);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
             @Override
@@ -62,7 +60,7 @@ public class FragmentosActivity extends AppCompatActivity {
             }
         });
     }
-    public class PagerAdapter extends FragmentPagerAdapter{
+    public class PagerAdapter extends FragmentPagerAdapter {
         public PagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
         }
@@ -70,9 +68,9 @@ public class FragmentosActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position){
-                case 0: return new LogoFragment();
-                case 1: return new Producto1Fragment();
-                case 2: return new BebidasFragment();
+                case 0: return new SalFragment();
+                case 1: return new DulceFragment();
+                case 2: return new BebidaFragment();
                 default: return null;
             }
         }
@@ -111,7 +109,7 @@ public class FragmentosActivity extends AppCompatActivity {
             case R.id.mOferta_Frag:
                 break;
             case R.id.mPromo_Frag:
-                Intent intento=new Intent(this,OfertasActivity.class);
+                Intent intento=new Intent(this,FragmentosActivity.class);
                 intento.putExtra("usuario", user);
                 intento.putExtra("contrasena", contrasena);
                 intento.putExtra("correo", correo);

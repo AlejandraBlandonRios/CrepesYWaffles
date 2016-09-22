@@ -56,6 +56,14 @@ public class MiPerfil extends AppCompatActivity {
                 startActivity(intento1);
                 finish();
                 break;
+            case R.id.mPromo_Frag:
+                Intent intento=new Intent(this,OfertasActivity.class);
+                intento.putExtra("usuario", usuario);
+                intento.putExtra("contrasena", contrasena);
+                intento.putExtra("correo", correo);
+                startActivity(intento);
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
