@@ -107,14 +107,14 @@ public class OfertasActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mOferta_Frag:
-                break;
-            case R.id.mPromo_Frag:
                 Intent intento=new Intent(this,FragmentosActivity.class);
                 intento.putExtra("usuario", user);
                 intento.putExtra("contrasena", contrasena);
                 intento.putExtra("correo", correo);
                 startActivity(intento);
                 finish();
+                break;
+            case R.id.mPromo_Frag:
                 break;
         }
 
