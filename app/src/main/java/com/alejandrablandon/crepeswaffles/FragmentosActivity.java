@@ -1,20 +1,15 @@
 package com.alejandrablandon.crepeswaffles;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import layout.LogoFragment;
 
@@ -54,11 +49,11 @@ public class FragmentosActivity extends AppCompatActivity {
 
             }
         };
-        ActionBar.Tab tab = actionBar.newTab().setIcon(R.drawable.logo).setTabListener(tabListener);
+        ActionBar.Tab tab = actionBar.newTab().setText(R.string.Almuerzo1).setTabListener(tabListener);
         actionBar.addTab(tab);
-        tab = actionBar.newTab().setIcon(R.drawable.cono1).setTabListener(tabListener);
+        tab = actionBar.newTab().setText(R.string.Desayuno1).setTabListener(tabListener);
         actionBar.addTab(tab);
-        tab = actionBar.newTab().setIcon(R.drawable.usuaria).setTabListener(tabListener);
+        tab = actionBar.newTab().setText(R.string.Helado1).setTabListener(tabListener);
         actionBar.addTab(tab);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
             @Override
@@ -106,7 +101,7 @@ public class FragmentosActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.mPrincipal:
-                Intent intento1=new Intent(this,MainActivity.class);
+                Intent intento1=new Intent(this,ProductosActivity.class);
                 intento1.putExtra("usuario", user);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);

@@ -35,7 +35,7 @@ public class LogginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Falta ingresar la contrasena", Toast.LENGTH_LONG).show();
                 } else if ((eName.getText().toString()).equals(user)==true && (eContraseña.getText().toString()).equals(contrasena)){
                     Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
-                    Intent intento=new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intento=new Intent(getApplicationContext(),ProductosActivity.class);
                     intento.putExtra("usuario", user);
                     intento.putExtra("contrasena", contrasena);
                     intento.putExtra("correo", correo);

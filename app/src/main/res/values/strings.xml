@@ -24,6 +24,9 @@
     <string name="Usuario2">Usuario registrado:</string>
     <string name="Contraseña3">Contraseña registrada:</string>
     <string name="Correo3">Correo registrado:</string>
+    <string name="Almuerzo1">Almuerzos</string>
+    <string name="Desayuno1">Desayunos</string>
+    <string name="Helado1">Helados</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -32,4 +35,10 @@
     <string name="Almuerzo">Almuerzo/Cena</string>
     <string name="Desayuno">Brunch/Desayuno</string>
     <string name="Helado">Helados</string>
+    <string name="Texto1Almuerzo1"> Crepe de Roastbeef:</string>
+    <string name="Texto2Almuerzo1"> El roastbeef tradición de la cocina inglesa, es un corte de carne asado al horno disfrútalo en nuestro menú Sueños acompañado de queso, ají panka, regula, cebollas caramelizadas y el chucrut de cebolla armando una fantasía de sabor.</string>
+    <string name="Texto1Desayuno1"> Bowl de Açaí:</string>
+    <string name="Texto2Desayuno1"> Es de color morado oscuro, redondo, en promedio tiene unos 10mm de diámetro y es llamada la “súper fruta” porque contiene grandes cantidades de vitamina C, calcio, hierro, ácido aspártico y glutámico y 16 aminoácidos. Un aliado ideal para tu cuidado.</string>
+    <string name="Texto1Helado1"> Tiramisú</string>
+    <string name="Texto2Helado1"> Desde Italia llega con su imponente combinación de sabores que juegan con el placer y el disfrute. Deleitarte, complacerte y regalarte el arte del sabor es nuestra principal inspiración.</string>
 </resources>

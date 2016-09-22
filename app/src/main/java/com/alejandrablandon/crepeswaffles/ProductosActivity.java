@@ -5,52 +5,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-public class MiPerfil extends AppCompatActivity {
 
-    String usuario,contrasena,correo;
-    TextView tUsuario,tContrasena,tCorreo;
+public class ProductosActivity extends AppCompatActivity {
+
+    String user,contrasena,correo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mi_perfil);
+        setContentView(R.layout.activity_productos);
 
-        tUsuario=(TextView)findViewById(R.id.tUsuario);
-        tContrasena=(TextView)findViewById(R.id.tContrasena);
-        tCorreo=(TextView)findViewById(R.id.tCorreo);
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
 
-        usuario=getIntent().getExtras().getString("usuario");
-        contrasena=getIntent().getExtras().getString("contrasena");
-        correo=getIntent().getExtras().getString("correo");
+        user = getIntent().getExtras().getString("usuario");
+        contrasena = getIntent().getExtras().getString("contrasena");
+        correo = getIntent().getExtras().getString("correo");
 
-        tUsuario.setText(usuario);
-        tContrasena.setText(contrasena);
-        tCorreo.setText(correo);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         switch (id){
             case R.id.mMiperfil:
-
+                Intent intento=new Intent(this,MiPerfil.class);
+                intento.putExtra("usuario", user);
+                intento.putExtra("contrasena", contrasena);
+                intento.putExtra("correo", correo);
+                startActivity(intento);
+                finish();
                 break;
             case R.id.mPrincipal:
-                Intent intent=new Intent(this,ProductosActivity.class);
-                intent.putExtra("usuario", usuario);
-                intent.putExtra("contrasena", contrasena);
-                intent.putExtra("correo", correo);
-                startActivity(intent);
-                finish();
                 break;
             case R.id.mOferta_Frag:
                 Intent intento1=new Intent(this,FragmentosActivity.class);
-                intento1.putExtra("usuario", usuario);
+                intento1.putExtra("usuario", user);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);
                 startActivity(intento1);
@@ -59,4 +55,10 @@ public class MiPerfil extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+
+
+
+

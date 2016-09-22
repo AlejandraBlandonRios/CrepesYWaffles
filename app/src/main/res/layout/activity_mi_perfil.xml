@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.alejandrablandon.crepeswaffles.LogginActivity"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/navajowhite">
 
     <TextView
         android:layout_width="wrap_content"
