@@ -1,82 +1,80 @@
 package com.alejandrablandon.crepeswaffles;
 
-import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //final String[] productos = new String[]{"Hamburguesa","PErro","Chuzos","Jugos"};
-
-    private Productos[] productos=
-            new Productos[]{
-                    new Productos("","",100,R.drawable.cono1),
-                    //new Productos("","",100,R.drawable.desayuno1),
-                    new Productos("","",100,R.drawable.desayuno2),
-                    new Productos("","",100,R.drawable.desayuno3)
-            };
-    ListView list;
+    String user,contrasena,correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,productos);
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
 
-        Adapter adaptador=new Adapter(this, productos);
-        list=(ListView)findViewById(R.id.list);
-        list.setAdapter(adaptador);
+        user = getIntent().getExtras().getString("usuario");
+        contrasena = getIntent().getExtras().getString("contrasena");
+        correo = getIntent().getExtras().getString("correo");
 
-       /* list.setOnClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), "Presiono"+i, Toast.LENGTH_SHORT).show();
-                String nombre=((Productos)AdapterView.getItemPosition(i)).getNombre();
-
-            }
-        });*/
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
-    class Adapter extends ArrayAdapter<Productos>{
-        public Adapter(Context context, Productos[] productos) {
-            super(context, R.layout.layout_item1,productos);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.mMiperfil:
+                Intent intento=new Intent(this,MiPerfilActivity.class);
+                intento.putExtra("usuario", user);
+                intento.putExtra("contrasena", contrasena);
+                intento.putExtra("correo", correo);
+                startActivity(intento);
+                finish();
+                break;
+            case R.id.mPrincipal:
+                break;
+            case R.id.mOferta_Frag:
+                Intent intento1=new Intent(this,MomentosActivity.class);
+                intento1.putExtra("usuario", user);
+                intento1.putExtra("contrasena", contrasena);
+                intento1.putExtra("correo", correo);
+                startActivity(intento1);
+                finish();
+                break;
+            case R.id.mPromo_Frag:
+                Intent intent=new Intent(this,SaboresActivity.class);
+                intent.putExtra("usuario", user);
+                intent.putExtra("contrasena", contrasena);
+                intent.putExtra("correo", correo);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.mPromociones_Frag:
+                Intent intento2=new Intent(this,PromocionesActivity.class);
+                intento2.putExtra("usuario", user);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
+                finish();
+                break;
         }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            LayoutInflater inflater= LayoutInflater.from(getContext());
-            View item=inflater.inflate(R.layout.layout_item1, null);
-
-            ImageView imagen=(ImageView)item.findViewById(R.id.imagen1);
-            imagen.setImageResource(productos[position].getIdImage());
-
-            TextView tPrecio=(TextView)item.findViewById(R.id.precio1);
-            tPrecio.setText(String.valueOf(productos[position].getPrecio()));
-
-            TextView tNombre=(TextView)item.findViewById(R.id.nombre1);
-            tNombre.setText(productos[position].getNombre());
-
-            TextView tDescripcion=(TextView)item.findViewById(R.id.descripcion1);
-            tDescripcion.setText(productos[position].getDescripcion());
-
-            return (item);
-
-        }
+        return super.onOptionsItemSelected(item);
     }
+
 
 }
+
+
+
+

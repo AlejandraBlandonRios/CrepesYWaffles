@@ -10,16 +10,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import layout.LogoFragment;
 
-public class OfertasActivity extends AppCompatActivity {
+public class SaboresActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     String user,contrasena,correo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ofertas);
+        setContentView(R.layout.activity_sabores);
 
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
@@ -92,14 +91,14 @@ public class OfertasActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.mMiperfil:
-                Intent intent = new Intent(this, MiPerfil.class);
+                Intent intent = new Intent(this, MiPerfilActivity.class);
                 intent.putExtra("usuario", user);
                 intent.putExtra("contrasena", contrasena);
                 intent.putExtra("correo", correo);
                 startActivity(intent);
                 break;
             case R.id.mPrincipal:
-                Intent intento1=new Intent(this,ProductosActivity.class);
+                Intent intento1=new Intent(this,MainActivity.class);
                 intento1.putExtra("usuario", user);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);
@@ -107,7 +106,7 @@ public class OfertasActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mOferta_Frag:
-                Intent intento=new Intent(this,FragmentosActivity.class);
+                Intent intento=new Intent(this,MomentosActivity.class);
                 intento.putExtra("usuario", user);
                 intento.putExtra("contrasena", contrasena);
                 intento.putExtra("correo", correo);
@@ -115,6 +114,14 @@ public class OfertasActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mPromo_Frag:
+                break;
+            case R.id.mPromociones_Frag:
+                Intent intento2=new Intent(this,PromocionesActivity.class);
+                intento2.putExtra("usuario", user);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
+                finish();
                 break;
         }
 

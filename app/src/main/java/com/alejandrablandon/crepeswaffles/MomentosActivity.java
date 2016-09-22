@@ -11,9 +11,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import layout.LogoFragment;
 
-public class FragmentosActivity extends AppCompatActivity {
+public class MomentosActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     String user,contrasena,correo;
@@ -21,7 +20,7 @@ public class FragmentosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragmentos);
+        setContentView(R.layout.activity_momentos);
 
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
@@ -70,9 +69,9 @@ public class FragmentosActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position){
-                case 0: return new LogoFragment();
-                case 1: return new Producto1Fragment();
-                case 2: return new BebidasFragment();
+                case 0: return new AlmuerzoFragment();
+                case 1: return new DesayunoFragment();
+                case 2: return new HeladosFragment();
                 default: return null;
             }
         }
@@ -94,14 +93,14 @@ public class FragmentosActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.mMiperfil:
-                Intent intent = new Intent(this, MiPerfil.class);
+                Intent intent = new Intent(this, MiPerfilActivity.class);
                 intent.putExtra("usuario", user);
                 intent.putExtra("contrasena", contrasena);
                 intent.putExtra("correo", correo);
                 startActivity(intent);
                 break;
             case R.id.mPrincipal:
-                Intent intento1=new Intent(this,ProductosActivity.class);
+                Intent intento1=new Intent(this,MainActivity.class);
                 intento1.putExtra("usuario", user);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);
@@ -111,11 +110,19 @@ public class FragmentosActivity extends AppCompatActivity {
             case R.id.mOferta_Frag:
                 break;
             case R.id.mPromo_Frag:
-                Intent intento=new Intent(this,OfertasActivity.class);
+                Intent intento=new Intent(this,SaboresActivity.class);
                 intento.putExtra("usuario", user);
                 intento.putExtra("contrasena", contrasena);
                 intento.putExtra("correo", correo);
                 startActivity(intento);
+                finish();
+                break;
+            case R.id.mPromociones_Frag:
+                Intent intento2=new Intent(this,PromocionesActivity.class);
+                intento2.putExtra("usuario", user);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
                 finish();
                 break;
         }

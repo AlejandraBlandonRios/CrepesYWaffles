@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MiPerfil extends AppCompatActivity {
+public class MiPerfilActivity extends AppCompatActivity {
 
     String usuario,contrasena,correo;
     TextView tUsuario,tContrasena,tCorreo;
@@ -41,7 +41,7 @@ public class MiPerfil extends AppCompatActivity {
 
                 break;
             case R.id.mPrincipal:
-                Intent intent=new Intent(this,ProductosActivity.class);
+                Intent intent=new Intent(this,MainActivity.class);
                 intent.putExtra("usuario", usuario);
                 intent.putExtra("contrasena", contrasena);
                 intent.putExtra("correo", correo);
@@ -49,7 +49,7 @@ public class MiPerfil extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mOferta_Frag:
-                Intent intento1=new Intent(this,FragmentosActivity.class);
+                Intent intento1=new Intent(this,MomentosActivity.class);
                 intento1.putExtra("usuario", usuario);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);
@@ -57,11 +57,19 @@ public class MiPerfil extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mPromo_Frag:
-                Intent intento=new Intent(this,OfertasActivity.class);
+                Intent intento=new Intent(this,SaboresActivity.class);
                 intento.putExtra("usuario", usuario);
                 intento.putExtra("contrasena", contrasena);
                 intento.putExtra("correo", correo);
                 startActivity(intento);
+                finish();
+                break;
+            case R.id.mPromociones_Frag:
+                Intent intento2=new Intent(this,PromocionesActivity.class);
+                intento2.putExtra("usuario", usuario);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
                 finish();
                 break;
         }

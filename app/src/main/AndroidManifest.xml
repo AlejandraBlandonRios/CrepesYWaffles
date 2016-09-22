@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductosActivity" />
-        <activity android:name=".MiPerfil" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MiPerfilActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegistroActivity" />
-        <activity android:name=".FragmentosActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MomentosActivity" />
+        <activity android:name=".Promociones" />
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
 
-        <activity android:name=".OfertasActivity"></activity>
+        <activity android:name=".SaboresActivity" />
+        <activity android:name=".PromocionesActivity"></activity>
     </application>
 
 </manifest>
