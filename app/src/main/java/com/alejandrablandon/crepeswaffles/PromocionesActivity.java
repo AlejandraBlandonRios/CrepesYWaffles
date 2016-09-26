@@ -26,10 +26,12 @@ public class PromocionesActivity extends AppCompatActivity {
     String user,contrasena,correo;
     private Productos[] productos=
             new Productos[]{
-                    new Productos("","",100,R.drawable.cono1),
-                    //new Productos("","",100,R.drawable.desayuno1),
-                    new Productos("","",100,R.drawable.desayuno2),
-                    new Productos("","",100,R.drawable.desayuno3)
+                    new Productos("Crepe de Roastbeef","Para los amantes de la carne",5000,R.drawable.almuerzo1),
+                    new Productos("Bowl de Açaí","Nuevos sabores en la mañana",5000,R.drawable.desayuno1),
+                    new Productos("Helado Tiramisú","La hora del helado",5000,R.drawable.helado1),
+                    new Productos("Salmón Roll","Disfruta dle mar",5000,R.drawable.sal1),
+                    new Productos("Waffles NUTELLA y Banano","Una dulce promoción",5000,R.drawable.dulce1),
+                    new Productos("Choco NUTELLA","La hora del chocolate",5000,R.drawable.bebida1)
             };
     ListView list;
 
@@ -51,16 +53,15 @@ public class PromocionesActivity extends AppCompatActivity {
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adaptador);
 
+
        /* list.setOnClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), "Presiono"+i, Toast.LENGTH_SHORT).show();
                 String nombre=((Productos)AdapterView.getItemPosition(i)).getNombre();
-
             }
         });*/
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -79,6 +80,12 @@ public class PromocionesActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mPrincipal:
+                Intent intento2=new Intent(this,MainActivity.class);
+                intento2.putExtra("usuario", user);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
+                finish();
                 break;
             case R.id.mOferta_Frag:
                 Intent intento1=new Intent(this,MomentosActivity.class);
@@ -123,9 +130,9 @@ public class PromocionesActivity extends AppCompatActivity {
 
             TextView tDescripcion = (TextView) item.findViewById(R.id.descripcion1);
             tDescripcion.setText(productos[position].getDescripcion());
-
             return (item);
 
         }
     }
+
 }

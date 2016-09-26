@@ -32,6 +32,8 @@
     <string name="Dulce1">Dulce</string>
     <string name="Bebida1">Bebidas</string>
     <string name="Promociones1">Promociones</string>
+    <string name="abierto">Open navigation drawer</string>
+    <string name="cerrado">Close navigation drawer</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

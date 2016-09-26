@@ -1,5 +1,6 @@
 package com.alejandrablandon.crepeswaffles;
 
+
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,32 +17,27 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-public class MiPerfilActivity extends AppCompatActivity {
+import java.util.List;
 
-    String usuario,contrasena,correo;
-    TextView tUsuario,tContrasena,tCorreo;
+public class NavigationDraActivity extends AppCompatActivity {
+
     private String[] opciones = new String[] {"primero", "segundo", "tercero","cuarto"};
     private DrawerLayout drawerLayout;
     private ListView listView;
     private ActionBarDrawerToggle drawerToggle;
+    String user,contrasena,correo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_dra2);
+        setContentView(R.layout.activity_navigation_dra);
 
-        tUsuario=(TextView)findViewById(R.id.tUsuario);
-        tContrasena=(TextView)findViewById(R.id.tContrasena);
-        tCorreo=(TextView)findViewById(R.id.tCorreo);
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
 
-        usuario=getIntent().getExtras().getString("usuario");
-        contrasena=getIntent().getExtras().getString("contrasena");
-        correo=getIntent().getExtras().getString("correo");
-
-        tUsuario.setText(usuario);
-        tContrasena.setText(contrasena);
-        tCorreo.setText(correo);
+        user = getIntent().getExtras().getString("usuario");
+        contrasena = getIntent().getExtras().getString("contrasena");
+        correo = getIntent().getExtras().getString("correo");
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
@@ -63,12 +59,8 @@ public class MiPerfilActivity extends AppCompatActivity {
                     case(0): fragment = new AlmuerzoFragment(); break;
                     case(1): fragment = new DesayunoFragment(); break;
                     case(2): fragment = new BebidaFragment(); break;
-                    case(3):
-                        Intent intento=new Intent(MiPerfilActivity.this,MiPerfilActivity.class);
-                        intento.putExtra("usuario", usuario);
-                        intento.putExtra("contrasena", contrasena);
-                        intento.putExtra("correo", correo);
-                        startActivity(intento);
+                    case(3): Intent intent = new Intent(NavigationDraActivity.this, MainActivity.class);
+                        startActivity(intent);
                         finish();
                         break;
                 }
@@ -82,20 +74,7 @@ public class MiPerfilActivity extends AppCompatActivity {
             }
         });
 
-        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.abierto, R.string.cerrado){
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-        };
+        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.abierto, R.string.cerrado);
 
         drawerLayout.setDrawerListener(drawerToggle);
     }
@@ -108,48 +87,45 @@ public class MiPerfilActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         switch (id){
-            case android.R.id.home:
-                drawerLayout.openDrawer(Gravity.LEFT);
-                return true;
             case R.id.mMiperfil:
+                Intent intento=new Intent(this,MiPerfilActivity.class);
+                intento.putExtra("usuario", user);
+                intento.putExtra("contrasena", contrasena);
+                intento.putExtra("correo", correo);
+                startActivity(intento);
+                finish();
                 break;
             case R.id.mPrincipal:
-                Intent intent=new Intent(this,MainActivity.class);
-                intent.putExtra("usuario", usuario);
-                intent.putExtra("contrasena", contrasena);
-                intent.putExtra("correo", correo);
-                startActivity(intent);
-                finish();
                 break;
             case R.id.mOferta_Frag:
                 Intent intento1=new Intent(this,MomentosActivity.class);
-                intento1.putExtra("usuario", usuario);
+                intento1.putExtra("usuario", user);
                 intento1.putExtra("contrasena", contrasena);
                 intento1.putExtra("correo", correo);
                 startActivity(intento1);
                 finish();
                 break;
             case R.id.mPromo_Frag:
-                Intent intento=new Intent(this,SaboresActivity.class);
-                intento.putExtra("usuario", usuario);
-                intento.putExtra("contrasena", contrasena);
-                intento.putExtra("correo", correo);
-                startActivity(intento);
+                Intent intent=new Intent(this,SaboresActivity.class);
+                intent.putExtra("usuario", user);
+                intent.putExtra("contrasena", contrasena);
+                intent.putExtra("correo", correo);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.mPromociones_Frag:
                 Intent intento2=new Intent(this,PromocionesActivity.class);
-                intento2.putExtra("usuario", usuario);
+                intento2.putExtra("usuario", user);
                 intento2.putExtra("contrasena", contrasena);
                 intento2.putExtra("correo", correo);
                 startActivity(intento2);
@@ -158,4 +134,5 @@ public class MiPerfilActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
