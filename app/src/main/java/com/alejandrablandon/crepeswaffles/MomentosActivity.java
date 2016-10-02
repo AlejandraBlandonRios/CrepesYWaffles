@@ -5,27 +5,36 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 
-public class MomentosActivity extends AppCompatActivity {
+public class MomentosActivity extends NavigationDraActivity {
 
     private ViewPager mViewPager;
     String user,contrasena,correo;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_momentos);
+        //setContentView(R.layout.activity_momentos);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_momentos, contentFrameLayout);
 
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
         correo = getIntent().getExtras().getString("correo");
 
+        //ActionBar actionBar = getSupportActionBar();
+        drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pag_fragmentos);
@@ -33,6 +42,11 @@ public class MomentosActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        if (actionBar != null){
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         ActionBar.TabListener tabListener = new ActionBar.TabListener(){
             @Override
@@ -92,6 +106,9 @@ public class MomentosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
+            case android.R.id.home:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                return true;
             case R.id.mMiperfil:
                 Intent intent = new Intent(this, MiPerfilActivity.class);
                 intent.putExtra("usuario", user);

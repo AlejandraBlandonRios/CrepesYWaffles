@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentContainer;
 import android.view.Gravity;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,12 +18,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.view.View;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends NavigationDraActivity{
 
     String user,contrasena,correo;
     private String[] opciones = new String[] {"primero", "segundo", "tercero","cuarto"};
@@ -33,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_dra);
+        //this.supportRequestWindowFeature(Window.FEATURE_ACTION_BAR);
+        //setContentView(R.layout.activity_navigation_dra);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_main, contentFrameLayout);
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
@@ -42,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
         contrasena = getIntent().getExtras().getString("contrasena");
         correo = getIntent().getExtras().getString("correo");
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        //ActionBar actionBar = getSupportActionBar();
+        ///if (actionBar != null){
+            //actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+            //actionBar.setDisplayHomeAsUpEnabled(true);
+        //}
 
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         listView = (ListView) findViewById(R.id.menuIzq);
 
-        listView.setAdapter(new ArrayAdapter<String>(getSupportActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_1, opciones));
+//        listView.setAdapter(new ArrayAdapter<String>(getSupportActionBar().getThemedContext(),
+//                android.R.layout.simple_list_item_1, opciones));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -102,14 +108,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-        public void onBackPressed() {
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
-            }
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
+    }
 
 
     @Override
@@ -167,4 +173,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-

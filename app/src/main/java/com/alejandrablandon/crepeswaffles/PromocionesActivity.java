@@ -2,8 +2,10 @@ package com.alejandrablandon.crepeswaffles;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,10 +23,11 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class PromocionesActivity extends AppCompatActivity {
+public class PromocionesActivity extends NavigationDraActivity {
 
     //final String[] productos = new String[]{"Hamburguesa","PErro","Chuzos","Jugos"};
     String user,contrasena,correo;
+    private DrawerLayout drawerLayout;
     private Productos[] productos=
             new Productos[]{
                     new Productos("Crepe de Roastbeef","Para los amantes de la carne",5000,R.drawable.almuerzo1),
@@ -38,7 +42,10 @@ public class PromocionesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_promociones);
+        //setContentView(R.layout.activity_promociones);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_promociones, contentFrameLayout);
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
@@ -49,6 +56,7 @@ public class PromocionesActivity extends AppCompatActivity {
 
         //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,productos);
 
+        drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         Adapter adaptador=new Adapter(this, productos);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adaptador);
@@ -71,6 +79,9 @@ public class PromocionesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         switch (id){
+            case android.R.id.home:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                return true;
             case R.id.mMiperfil:
                 Intent intento=new Intent(this,MiPerfilActivity.class);
                 intento.putExtra("usuario", user);

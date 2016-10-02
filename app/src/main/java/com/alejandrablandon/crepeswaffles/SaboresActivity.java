@@ -4,31 +4,38 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 
-public class SaboresActivity extends AppCompatActivity {
+public class SaboresActivity extends NavigationDraActivity {
 
     private ViewPager mViewPager;
     String user,contrasena,correo;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sabores);
+        //setContentView(R.layout.activity_sabores);
 
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
         correo = getIntent().getExtras().getString("correo");
 
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_sabores, contentFrameLayout);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pag_ofertas);
         mViewPager.setAdapter(pagerAdapter);
 
+        drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -90,6 +97,9 @@ public class SaboresActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
+            case android.R.id.home:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                return true;
             case R.id.mMiperfil:
                 Intent intent = new Intent(this, MiPerfilActivity.class);
                 intent.putExtra("usuario", user);

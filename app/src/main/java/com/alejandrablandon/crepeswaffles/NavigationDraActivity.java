@@ -59,8 +59,12 @@ public class NavigationDraActivity extends AppCompatActivity {
                     case(0): fragment = new AlmuerzoFragment(); break;
                     case(1): fragment = new DesayunoFragment(); break;
                     case(2): fragment = new BebidaFragment(); break;
-                    case(3): Intent intent = new Intent(NavigationDraActivity.this, MainActivity.class);
-                        startActivity(intent);
+                    case(3):
+                        Intent intento=new Intent(NavigationDraActivity.this,MiPerfilActivity.class);
+                        intento.putExtra("usuario", user);
+                        intento.putExtra("contrasena", contrasena);
+                        intento.putExtra("correo", correo);
+                        startActivity(intento);
                         finish();
                         break;
                 }

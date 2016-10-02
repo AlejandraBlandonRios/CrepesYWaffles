@@ -17,23 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".LogginActivity"/>
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MomentosActivity" />
         <activity android:name=".PromocionesActivity" />
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
         <activity android:name=".SaboresActivity" />
         <activity android:name=".NavigationDraActivity"></activity>
     </application>
