@@ -15,21 +15,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MiPerfilActivity extends AppCompatActivity {
+public class MiPerfilActivity extends NavigationDraActivity {
 
     String usuario,contrasena,correo;
+    String promo;
     TextView tUsuario,tContrasena,tCorreo;
-    private String[] opciones = new String[] {"primero", "segundo", "tercero","cuarto"};
+    private String[] opciones = new String[] {"Mi Perfil", "Momentos", "Sabores","Promociones"};
     private DrawerLayout drawerLayout;
     private ListView listView;
     private ActionBarDrawerToggle drawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_dra2);
+        //setContentView(R.layout.activity_navigation_dra2);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_mi_perfil, contentFrameLayout);
 
         tUsuario=(TextView)findViewById(R.id.tUsuario);
         tContrasena=(TextView)findViewById(R.id.tContrasena);
@@ -38,6 +43,7 @@ public class MiPerfilActivity extends AppCompatActivity {
         usuario=getIntent().getExtras().getString("usuario");
         contrasena=getIntent().getExtras().getString("contrasena");
         correo=getIntent().getExtras().getString("correo");
+        promo = getIntent().getExtras().getString("promo");
 
         tUsuario.setText(usuario);
         tContrasena.setText(contrasena);
@@ -60,22 +66,35 @@ public class MiPerfilActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Fragment fragment = null;
                 switch (i){
-                    case(0): fragment = new AlmuerzoFragment(); break;
-                    case(1): fragment = new DesayunoFragment(); break;
-                    case(2): fragment = new BebidaFragment(); break;
-                    case(3):
-                        Intent intento=new Intent(MiPerfilActivity.this,MiPerfilActivity.class);
-                        intento.putExtra("usuario", usuario);
+                    case(0):
+                        break;
+                    case(1):
+                        Intent intento1=new Intent(MiPerfilActivity.this,MomentosActivity.class);
+                        intento1.putExtra("usuario", user);
+                        intento1.putExtra("contrasena", contrasena);
+                        intento1.putExtra("correo", correo);
+                        intento1.putExtra("promo", promo);
+                        startActivity(intento1);
+                        finish();
+                        break;
+                    case(2):
+                        Intent intento=new Intent(MiPerfilActivity.this,SaboresActivity.class);
+                        intento.putExtra("usuario", user);
                         intento.putExtra("contrasena", contrasena);
                         intento.putExtra("correo", correo);
+                        intento.putExtra("promo", promo);
                         startActivity(intento);
                         finish();
                         break;
-                }
-                if (i != 3) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.contenedorFrame, fragment).commit();
-
+                    case(3):
+                        Intent intent=new Intent(MiPerfilActivity.this,MainActivity.class);
+                        intent.putExtra("usuario", user);
+                        intent.putExtra("contrasena", contrasena);
+                        intent.putExtra("correo", correo);
+                        intent.putExtra("promo", promo);
+                        startActivity(intent);
+                        finish();
+                        break;
                 }
                 listView.setItemChecked(i,true);
                 drawerLayout.closeDrawer(listView);
@@ -123,14 +142,6 @@ public class MiPerfilActivity extends AppCompatActivity {
                 return true;
             case R.id.mMiperfil:
                 break;
-            case R.id.mPrincipal:
-                Intent intent=new Intent(this,MainActivity.class);
-                intent.putExtra("usuario", usuario);
-                intent.putExtra("contrasena", contrasena);
-                intent.putExtra("correo", correo);
-                startActivity(intent);
-                finish();
-                break;
             case R.id.mOferta_Frag:
                 Intent intento1=new Intent(this,MomentosActivity.class);
                 intento1.putExtra("usuario", usuario);
@@ -148,7 +159,7 @@ public class MiPerfilActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.mPromociones_Frag:
-                Intent intento2=new Intent(this,PromocionesActivity.class);
+                Intent intento2=new Intent(this,MainActivity.class);
                 intento2.putExtra("usuario", usuario);
                 intento2.putExtra("contrasena", contrasena);
                 intento2.putExtra("correo", correo);

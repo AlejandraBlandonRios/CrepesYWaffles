@@ -12,14 +12,21 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
 
 public class MomentosActivity extends NavigationDraActivity {
 
     private ViewPager mViewPager;
+    String promo;
     String user,contrasena,correo;
     private DrawerLayout drawerLayout;
+    private String[] opciones = new String[] {"Mi Perfil", "Momentos", "Sabores","Promociones"};
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class MomentosActivity extends NavigationDraActivity {
         user = getIntent().getExtras().getString("usuario");
         contrasena = getIntent().getExtras().getString("contrasena");
         correo = getIntent().getExtras().getString("correo");
+        promo = getIntent().getExtras().getString("promo");
 
         //ActionBar actionBar = getSupportActionBar();
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
@@ -72,6 +80,50 @@ public class MomentosActivity extends NavigationDraActivity {
             @Override
             public void onPageSelected(int position) {
                 getSupportActionBar().setSelectedNavigationItem(position);
+            }
+        });
+
+        listView = (ListView) findViewById(R.id.menuIzq);
+
+        listView.setAdapter(new ArrayAdapter<String>(getSupportActionBar().getThemedContext(),
+                android.R.layout.simple_list_item_1, opciones));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case(0):
+                        Intent intento1=new Intent(MomentosActivity.this,MiPerfilActivity.class);
+                        intento1.putExtra("usuario", user);
+                        intento1.putExtra("contrasena", contrasena);
+                        intento1.putExtra("correo", correo);
+                        intento1.putExtra("promo", promo);
+                        startActivity(intento1);
+                        finish();
+                        break;
+                    case(1):
+                        break;
+                    case(2):
+                        Intent intento=new Intent(MomentosActivity.this,SaboresActivity.class);
+                        intento.putExtra("usuario", user);
+                        intento.putExtra("contrasena", contrasena);
+                        intento.putExtra("correo", correo);
+                        intento.putExtra("promo", promo);
+                        startActivity(intento);
+                        finish();
+                        break;
+                    case(3):
+                        Intent intent=new Intent(MomentosActivity.this,MainActivity.class);
+                        intent.putExtra("usuario", user);
+                        intent.putExtra("contrasena", contrasena);
+                        intent.putExtra("correo", correo);
+                        intent.putExtra("promo", promo);
+                        startActivity(intent);
+                        finish();
+                        break;
+                }
+                listView.setItemChecked(i,true);
+                drawerLayout.closeDrawer(listView);
             }
         });
     }
@@ -116,14 +168,6 @@ public class MomentosActivity extends NavigationDraActivity {
                 intent.putExtra("correo", correo);
                 startActivity(intent);
                 break;
-            case R.id.mPrincipal:
-                Intent intento1=new Intent(this,MainActivity.class);
-                intento1.putExtra("usuario", user);
-                intento1.putExtra("contrasena", contrasena);
-                intento1.putExtra("correo", correo);
-                startActivity(intento1);
-                finish();
-                break;
             case R.id.mOferta_Frag:
                 break;
             case R.id.mPromo_Frag:
@@ -135,7 +179,7 @@ public class MomentosActivity extends NavigationDraActivity {
                 finish();
                 break;
             case R.id.mPromociones_Frag:
-                Intent intento2=new Intent(this,PromocionesActivity.class);
+                Intent intento2=new Intent(this,MainActivity.class);
                 intento2.putExtra("usuario", user);
                 intento2.putExtra("contrasena", contrasena);
                 intento2.putExtra("correo", correo);

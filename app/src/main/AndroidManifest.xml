@@ -17,12 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogginActivity"/>
+        <activity android:name=".LogginActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MomentosActivity" />
-        <activity android:name=".PromocionesActivity" />
         <activity android:name=".SaboresActivity" />
-        <activity android:name=".NavigationDraActivity"></activity>
+        <activity android:name=".NavigationDraActivity" />
+        <activity android:name=".PromocionesActivity"></activity>
     </application>
 
 </manifest>
