@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mMiperfil"
-        android:title="@string/MiPerfil1"/>
-    <item
-        android:id="@+id/mOferta_Frag"
-        android:title="@string/Fragmentos1"/>
-    <item
-        android:id="@+id/mPromo_Frag"
-        android:title="@string/Promo1"/>
-    <item
-        android:id="@+id/mPromociones_Frag"
-        android:title="@string/Promociones1"/>
-    <item
         android:id="@+id/mCerrar"
         android:title="@string/Cerrar"/>
 </menu>

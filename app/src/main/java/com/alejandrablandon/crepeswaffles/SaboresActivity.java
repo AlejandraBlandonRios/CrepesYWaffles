@@ -166,31 +166,6 @@ public class SaboresActivity extends NavigationDraActivity {
                 startActivity(intento3);
                 finish();
                 break;
-            case R.id.mMiperfil:
-                Intent intent = new Intent(this, MiPerfilActivity.class);
-                intent.putExtra("usuario", user);
-                intent.putExtra("contrasena", contrasena);
-                intent.putExtra("correo", correo);
-                startActivity(intent);
-                break;
-            case R.id.mOferta_Frag:
-                Intent intento=new Intent(this,MomentosActivity.class);
-                intento.putExtra("usuario", user);
-                intento.putExtra("contrasena", contrasena);
-                intento.putExtra("correo", correo);
-                startActivity(intento);
-                finish();
-                break;
-            case R.id.mPromo_Frag:
-                break;
-            case R.id.mPromociones_Frag:
-                Intent intento2=new Intent(this,MainActivity.class);
-                intento2.putExtra("usuario", user);
-                intento2.putExtra("contrasena", contrasena);
-                intento2.putExtra("correo", correo);
-                startActivity(intento2);
-                finish();
-                break;
         }
 
         return super.onOptionsItemSelected(item);

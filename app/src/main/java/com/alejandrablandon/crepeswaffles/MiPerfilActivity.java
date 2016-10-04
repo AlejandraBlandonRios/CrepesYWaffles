@@ -55,7 +55,6 @@ public class MiPerfilActivity extends NavigationDraActivity {
         preferencia1=preferencias.getString("usuario","");
         preferencia2=preferencias.getString("contrasena","");
         preferencia3=preferencias.getString("correo","");
-        Toast.makeText(getApplicationContext(), "El dato ingresado"+preferencia1, Toast.LENGTH_LONG).show();
 
         tUsuario.setText(preferencia1);
         tContrasena.setText(preferencia2);
@@ -163,32 +162,7 @@ public class MiPerfilActivity extends NavigationDraActivity {
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.mMiperfil:
-                break;
-            case R.id.mOferta_Frag:
-                Intent intento1=new Intent(this,MomentosActivity.class);
-                intento1.putExtra("usuario", usuario);
-                intento1.putExtra("contrasena", contrasena);
-                intento1.putExtra("correo", correo);
-                startActivity(intento1);
-                finish();
-                break;
-            case R.id.mPromo_Frag:
-                Intent intento=new Intent(this,SaboresActivity.class);
-                intento.putExtra("usuario", usuario);
-                intento.putExtra("contrasena", contrasena);
-                intento.putExtra("correo", correo);
-                startActivity(intento);
-                finish();
-                break;
-            case R.id.mPromociones_Frag:
-                Intent intento2=new Intent(this,MainActivity.class);
-                intento2.putExtra("usuario", usuario);
-                intento2.putExtra("contrasena", contrasena);
-                intento2.putExtra("correo", correo);
-                startActivity(intento2);
-                finish();
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

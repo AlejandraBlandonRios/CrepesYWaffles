@@ -239,32 +239,8 @@ public class MainActivity extends NavigationDraActivity{
                 startActivity(intento2);
                 finish();
                 break;
-            case R.id.mMiperfil:
-                Intent intento=new Intent(this,MiPerfilActivity.class);
-                intento.putExtra("usuario", user);
-                intento.putExtra("contrasena", contrasena);
-                intento.putExtra("correo", correo);
-                startActivity(intento);
-                finish();
-                break;
-            case R.id.mOferta_Frag:
-                Intent intento1=new Intent(this,MomentosActivity.class);
-                intento1.putExtra("usuario", user);
-                intento1.putExtra("contrasena", contrasena);
-                intento1.putExtra("correo", correo);
-                startActivity(intento1);
-                finish();
-                break;
-            case R.id.mPromo_Frag:
-                Intent intent=new Intent(this,SaboresActivity.class);
-                intent.putExtra("usuario", user);
-                intent.putExtra("contrasena", contrasena);
-                intent.putExtra("correo", correo);
-                startActivity(intent);
-                finish();
-                break;
-            case R.id.mPromociones_Frag:
-                break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
