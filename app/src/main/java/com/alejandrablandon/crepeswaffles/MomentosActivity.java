@@ -2,6 +2,8 @@ package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -161,6 +163,18 @@ public class MomentosActivity extends NavigationDraActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(Gravity.LEFT);
                 return true;
+            case R.id.mCerrar:
+                SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor= preferencias.edit();
+                editor.putString("cerrar", "si");
+                editor.commit();
+                Intent intento3=new Intent(this,LogginActivity.class);
+                intento3.putExtra("usuario", user);
+                intento3.putExtra("contrasena", contrasena);
+                intento3.putExtra("correo", correo);
+                startActivity(intento3);
+                finish();
+                break;
             case R.id.mMiperfil:
                 Intent intent = new Intent(this, MiPerfilActivity.class);
                 intent.putExtra("usuario", user);

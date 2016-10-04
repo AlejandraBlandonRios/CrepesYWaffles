@@ -1,6 +1,8 @@
 package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MiPerfilActivity extends NavigationDraActivity {
 
@@ -28,6 +31,9 @@ public class MiPerfilActivity extends NavigationDraActivity {
     private DrawerLayout drawerLayout;
     private ListView listView;
     private ActionBarDrawerToggle drawerToggle;
+    SharedPreferences preferencias;
+    String preferencia1,preferencia2,preferencia3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +51,15 @@ public class MiPerfilActivity extends NavigationDraActivity {
         correo=getIntent().getExtras().getString("correo");
         promo = getIntent().getExtras().getString("promo");
 
-        tUsuario.setText(usuario);
-        tContrasena.setText(contrasena);
-        tCorreo.setText(correo);
+        preferencias = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferencia1=preferencias.getString("usuario","");
+        preferencia2=preferencias.getString("contrasena","");
+        preferencia3=preferencias.getString("correo","");
+        Toast.makeText(getApplicationContext(), "El dato ingresado"+preferencia1, Toast.LENGTH_LONG).show();
+
+        tUsuario.setText(preferencia1);
+        tContrasena.setText(preferencia2);
+        tCorreo.setText(preferencia3);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
@@ -64,7 +76,6 @@ public class MiPerfilActivity extends NavigationDraActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Fragment fragment = null;
                 switch (i){
                     case(0):
                         break;
@@ -140,6 +151,18 @@ public class MiPerfilActivity extends NavigationDraActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(Gravity.LEFT);
                 return true;
+            case R.id.mCerrar:
+                SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor= preferencias.edit();
+                editor.putString("cerrar", "si");
+                editor.commit();
+                Intent intent=new Intent(this,LogginActivity.class);
+                intent.putExtra("usuario", user);
+                intent.putExtra("contrasena", contrasena);
+                intent.putExtra("correo", correo);
+                startActivity(intent);
+                finish();
+                break;
             case R.id.mMiperfil:
                 break;
             case R.id.mOferta_Frag:

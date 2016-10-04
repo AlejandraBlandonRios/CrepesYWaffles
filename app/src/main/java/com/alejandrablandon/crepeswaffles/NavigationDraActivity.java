@@ -2,6 +2,8 @@ package com.alejandrablandon.crepeswaffles;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -115,6 +117,18 @@ public class NavigationDraActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         switch (id){
+            case R.id.mCerrar:
+                SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor= preferencias.edit();
+                editor.putString("cerrar", "si");
+                editor.commit();
+                Intent intento3=new Intent(this,LogginActivity.class);
+                intento3.putExtra("usuario", user);
+                intento3.putExtra("contrasena", contrasena);
+                intento3.putExtra("correo", correo);
+                startActivity(intento3);
+                finish();
+                break;
             case R.id.mMiperfil:
                 Intent intento=new Intent(this,MiPerfilActivity.class);
                 intento.putExtra("usuario", user);

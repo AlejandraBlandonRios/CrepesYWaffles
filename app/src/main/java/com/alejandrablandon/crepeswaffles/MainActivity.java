@@ -3,6 +3,8 @@ package com.alejandrablandon.crepeswaffles;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -225,6 +227,18 @@ public class MainActivity extends NavigationDraActivity{
             case android.R.id.home:
                 drawerLayout.openDrawer(Gravity.LEFT);
                 return true;
+            case R.id.mCerrar:
+                SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor= preferencias.edit();
+                editor.putString("cerrar", "si");
+                editor.commit();
+                Intent intento2=new Intent(this,LogginActivity.class);
+                intento2.putExtra("usuario", user);
+                intento2.putExtra("contrasena", contrasena);
+                intento2.putExtra("correo", correo);
+                startActivity(intento2);
+                finish();
+                break;
             case R.id.mMiperfil:
                 Intent intento=new Intent(this,MiPerfilActivity.class);
                 intento.putExtra("usuario", user);

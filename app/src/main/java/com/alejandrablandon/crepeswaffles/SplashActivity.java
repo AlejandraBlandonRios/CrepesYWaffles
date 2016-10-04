@@ -1,7 +1,9 @@
 package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -19,6 +21,10 @@ public class SplashActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Establece el nodo
 
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE); //Quitar AppBar
+        SharedPreferences preferencias= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor= preferencias.edit();
+        editor.putString("cerrar", "no");
+        editor.commit();
 
         setContentView(R.layout.activity_splash);
 
