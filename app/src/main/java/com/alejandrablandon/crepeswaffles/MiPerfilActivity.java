@@ -55,7 +55,8 @@ public class MiPerfilActivity extends NavigationDraActivity {
         preferencia1=preferencias.getString("usuario","");
         preferencia2=preferencias.getString("contrasena","");
         preferencia3=preferencias.getString("correo","");
-
+        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
+        
         tUsuario.setText(preferencia1);
         tContrasena.setText(preferencia2);
         tCorreo.setText(preferencia3);

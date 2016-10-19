@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends NavigationDraActivity{
@@ -49,6 +50,9 @@ public class MainActivity extends NavigationDraActivity{
             };
     ListView list;
 
+    SharedPreferences preferencias;
+    String preferencia1,preferencia2,preferencia3,cerrar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,10 @@ public class MainActivity extends NavigationDraActivity{
         contrasena = getIntent().getExtras().getString("contrasena");
         correo = getIntent().getExtras().getString("correo");
         promo = getIntent().getExtras().getString("promo");
+
+        preferencias = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferencia1=preferencias.getString("usuario","");
+        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
 
