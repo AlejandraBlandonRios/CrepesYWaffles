@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ public class PromocionesActivity extends NavigationDraActivity {
     String promo;
     ImageView imagen1,imagen2,imagen3,imagen4,imagen5,imagen6;
     String prueba;
+    Button favorito;
     private DrawerLayout drawerLayout;
     private ListView listView;
     private String[] opciones = new String[] {"Mi Perfil", "Momentos", "Sabores","Promociones"};
@@ -57,12 +59,15 @@ public class PromocionesActivity extends NavigationDraActivity {
         Productos = new ProductosSQLiteHelper(this,"ContactosDB",null,1);
         Productosdb = Productos.getWritableDatabase();
 
+
+
         imagen1=(ImageView)findViewById(R.id.iprimera);
         imagen2=(ImageView)findViewById(R.id.isegunda);
         imagen3=(ImageView)findViewById(R.id.itercera);
         imagen4=(ImageView)findViewById(R.id.icuarta);
         imagen5=(ImageView)findViewById(R.id.iquinta);
         imagen6=(ImageView)findViewById(R.id.isexta);
+        favorito=(Button)findViewById(R.id.Favorite);
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
@@ -75,22 +80,27 @@ public class PromocionesActivity extends NavigationDraActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         switch (promo){
             case "primero":
-                //Base de datos
-                prueba="Salmón Roll";
-                Cursor c=Productosdb.query("Productos",null, "Producto='"+prueba+"'", null,null,null,null);
-                if(c.moveToFirst()){
-                    do {
-                        String prueba1 = c.getString(c.getColumnIndex("Descripcion"));
-                        Toast.makeText(getApplicationContext(), prueba1, Toast.LENGTH_LONG).show();
-                        c.moveToNext();
-                    }while (c.moveToNext());
-                }
                 imagen1.setVisibility(View.VISIBLE);
                 imagen2.setVisibility(View.GONE);
                 imagen3.setVisibility(View.GONE);
                 imagen4.setVisibility(View.GONE);
                 imagen5.setVisibility(View.GONE);
                 imagen6.setVisibility(View.GONE);
+                favorito.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        //Base de datos
+                        prueba="Crepe de Roastbeef";
+                        Cursor c=Productosdb.rawQuery("SELECT * FROM Productos WHERE Producto="+prueba,null);
+                        if(c.moveToFirst()){
+                            do {
+                                String prueba1 = c.getString(c.getColumnIndex("Descripcion"));
+                                Toast.makeText(getApplicationContext(), prueba1, Toast.LENGTH_LONG).show();
+                                c.moveToNext();
+                            }while (c.moveToNext());
+                        }
+                        Toast.makeText(getApplicationContext(), prueba, Toast.LENGTH_LONG).show();
+                    }
+                });
                 break;
             case "segundo":
                 imagen1.setVisibility(View.GONE);

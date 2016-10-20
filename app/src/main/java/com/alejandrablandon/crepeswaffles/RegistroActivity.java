@@ -28,7 +28,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        Contactos = new ContactosSQLiteHelper(this,"AgendaDB",null,1);
+        Contactos = new ContactosSQLiteHelper(this,"ContactosDB",null,1);
         Contactosdb = Contactos.getWritableDatabase();
 
         eNombre=(EditText)findViewById(R.id.eNombre);
