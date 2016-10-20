@@ -1,6 +1,5 @@
 package com.alejandrablandon.crepeswaffles;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,8 +23,7 @@ public class LogginActivity extends AppCompatActivity {
 
     //Base de datos
     ContactosSQLiteHelper Contactos;
-    ContentValues dataBD;
-    SQLiteDatabase dbContactos;
+    SQLiteDatabase db;
 
 
     @Override
@@ -35,7 +33,7 @@ public class LogginActivity extends AppCompatActivity {
 
         //Base de datos
         Contactos = new ContactosSQLiteHelper(this,"ContactosDB",null,1);
-        dbContactos = Contactos.getWritableDatabase();
+        db = Contactos.getWritableDatabase();
 
         eName=(EditText)findViewById(R.id.eName);
         eContraseña=(EditText)findViewById(R.id.eContraseña);
@@ -53,7 +51,7 @@ public class LogginActivity extends AppCompatActivity {
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=dbContactos.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -87,7 +85,6 @@ public class LogginActivity extends AppCompatActivity {
                         intento.putExtra("contrasena", contrasena);
                         intento.putExtra("correo", correo);
                         startActivity(intento);
-                        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Falta registrarse o datos erróneos", Toast.LENGTH_LONG).show();
                     }
@@ -101,7 +98,7 @@ public class LogginActivity extends AppCompatActivity {
             });
         } else if(preferencia1.length()!=0 && cerrar=="no"){
             //Base de datos
-            Cursor c=dbContactos.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+            Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
             //Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
             if(c.moveToFirst()){
                 preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -114,19 +111,17 @@ public class LogginActivity extends AppCompatActivity {
                 c.moveToNext();
                 //correo=c.getString(3);
             }
-            Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
             Intent intento2=new Intent(this,MainActivity.class);
             intento2.putExtra("usuario", user);
             intento2.putExtra("contrasena", contrasena);
             intento2.putExtra("correo", correo);
             startActivity(intento2);
-            Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
             finish();
         } else if(preferencia1.length()!=0 && cerrar=="si"){
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=dbContactos.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -139,7 +134,6 @@ public class LogginActivity extends AppCompatActivity {
                             c.moveToNext();
                         }while (c.moveToNext());
                     }
-                    Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                     if (eName.length() == 0) {
                         eName.setText("");
                         eContraseña.setText("");
@@ -160,7 +154,6 @@ public class LogginActivity extends AppCompatActivity {
                         intento.putExtra("contrasena", contrasena);
                         intento.putExtra("correo", correo);
                         startActivity(intento);
-                        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Falta registrarse o datos erróneos", Toast.LENGTH_LONG).show();
                     }
@@ -176,7 +169,7 @@ public class LogginActivity extends AppCompatActivity {
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=dbContactos.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -189,7 +182,6 @@ public class LogginActivity extends AppCompatActivity {
                             c.moveToNext();
                         }while (c.moveToNext());
                     }
-                    Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                     if (eName.length() == 0) {
                         eName.setText("");
                         eContraseña.setText("");
@@ -211,7 +203,6 @@ public class LogginActivity extends AppCompatActivity {
                         intento.putExtra("contrasena", contrasena);
                         intento.putExtra("correo", correo);
                         startActivity(intento);
-                        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Falta registrarse o datos erróneos", Toast.LENGTH_LONG).show();
                     }
@@ -236,7 +227,7 @@ public class LogginActivity extends AppCompatActivity {
             Log.d("contraseña", contrasena);
             Log.d("correo",correo);
             //Base de datos
-            Cursor c=dbContactos.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+            Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
             if(c.moveToFirst()){
                 do {
                     preferencia1 = c.getString(c.getColumnIndex("Nombre"));

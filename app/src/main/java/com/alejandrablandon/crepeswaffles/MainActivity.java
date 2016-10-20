@@ -1,9 +1,11 @@
 package com.alejandrablandon.crepeswaffles;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -53,12 +55,21 @@ public class MainActivity extends NavigationDraActivity{
     SharedPreferences preferencias;
     String preferencia1,preferencia2,preferencia3,cerrar;
 
+    //Base de datos
+    ProductosSQLiteHelper ProductosHelper;
+    SQLiteDatabase db;
+    ContentValues ProductosBD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_main, contentFrameLayout);
+
+        //Base de datos
+        ProductosHelper = new ProductosSQLiteHelper(this,"ContactosDB",null,1);
+        db = ProductosHelper.getWritableDatabase();
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
@@ -126,6 +137,11 @@ public class MainActivity extends NavigationDraActivity{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case(0):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Crepe de Roastbeef");
+                        ProductosBD.put("Descripcion","Para los amantes de la carne");
+                        ProductosBD.put("Precio",5500);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "primero";
                         Intent intent=new Intent(MainActivity.this,PromocionesActivity.class);
                         intent.putExtra("usuario", user);
@@ -136,6 +152,11 @@ public class MainActivity extends NavigationDraActivity{
                         finish();
                         break;
                     case(1):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Bowl de Açaí");
+                        ProductosBD.put("Descripcion","Nuevos sabores en la mañana");
+                        ProductosBD.put("Precio",6700);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "segundo";
                         Intent intento1=new Intent(MainActivity.this,PromocionesActivity.class);
                         intento1.putExtra("usuario", user);
@@ -146,6 +167,11 @@ public class MainActivity extends NavigationDraActivity{
                         finish();
                         break;
                     case(2):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Helado Tiramisú");
+                        ProductosBD.put("Descripcion","La hora del helado");
+                        ProductosBD.put("Precio",7200);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "tercero";
                         Intent intento=new Intent(MainActivity.this,PromocionesActivity.class);
                         intento.putExtra("usuario", user);
@@ -156,6 +182,11 @@ public class MainActivity extends NavigationDraActivity{
                         finish();
                         break;
                     case(3):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Salmón Roll");
+                        ProductosBD.put("Descripcion","Disfruta dle mar");
+                        ProductosBD.put("Precio",5800);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "cuarto";
                         Intent intento2=new Intent(MainActivity.this,PromocionesActivity.class);
                         intento2.putExtra("usuario", user);
@@ -166,6 +197,11 @@ public class MainActivity extends NavigationDraActivity{
                         finish();
                         break;
                     case (4):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Waffles NUTELLA y Banano");
+                        ProductosBD.put("Descripcion","Una dulce promoción");
+                        ProductosBD.put("Precio",6900);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "quinto";
                         Intent intento3=new Intent(MainActivity.this,PromocionesActivity.class);
                         intento3.putExtra("usuario", user);
@@ -176,6 +212,11 @@ public class MainActivity extends NavigationDraActivity{
                         finish();
                         break;
                     case (5):
+                        ProductosBD=new ContentValues();
+                        ProductosBD.put("Producto","Choco NUTELLA");
+                        ProductosBD.put("Descripcion","Para los amantes de la carne");
+                        ProductosBD.put("Precio",7100);
+                        db.insert("Productos",null,ProductosBD);
                         promo= "sexto";
                         Intent intento4=new Intent(MainActivity.this,PromocionesActivity.class);
                         intento4.putExtra("usuario", user);

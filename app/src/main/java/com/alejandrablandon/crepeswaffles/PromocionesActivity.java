@@ -1,6 +1,7 @@
 package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,9 @@ public class PromocionesActivity extends NavigationDraActivity {
     private ListView listView;
     private String[] opciones = new String[] {"Mi Perfil", "Momentos", "Sabores","Promociones"};
 
+    //Base de datos
+    ContactosSQLiteHelper Contactos;
+    SQLiteDatabase dbContactos;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
@@ -64,6 +68,7 @@ public class PromocionesActivity extends NavigationDraActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         switch (promo){
             case "primero":
+
                 imagen1.setVisibility(View.VISIBLE);
                 imagen2.setVisibility(View.GONE);
                 imagen3.setVisibility(View.GONE);
