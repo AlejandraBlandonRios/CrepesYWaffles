@@ -10,7 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ProductosSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlCreate="CREATE TABLE Contactos (" +
+    private String DATA_BASE_NAME= "ContactosBD";
+    private int DATA_VERSION=1;
+
+    String sqlCreate="CREATE TABLE Productos (" +
             "idProducto     INTEGER PRIMARY KEY AUTOINCREMENT," +
             "Producto       TEXT," +
             "Descripcion    TEXT," +

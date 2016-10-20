@@ -1,6 +1,7 @@
 package com.alejandrablandon.crepeswaffles;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,19 +15,21 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class PromocionesActivity extends NavigationDraActivity {
 
     String user,contrasena,correo;
     String promo;
     ImageView imagen1,imagen2,imagen3,imagen4,imagen5,imagen6;
+    String prueba;
     private DrawerLayout drawerLayout;
     private ListView listView;
     private String[] opciones = new String[] {"Mi Perfil", "Momentos", "Sabores","Promociones"};
 
     //Base de datos
-    ContactosSQLiteHelper Contactos;
-    SQLiteDatabase dbContactos;
+    ProductosSQLiteHelper Productos;
+    SQLiteDatabase Productosdb;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
@@ -50,6 +53,10 @@ public class PromocionesActivity extends NavigationDraActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_promociones, contentFrameLayout);
 
+        //Base de datos
+        Productos = new ProductosSQLiteHelper(this,"ContactosDB",null,1);
+        Productosdb = Productos.getWritableDatabase();
+
         imagen1=(ImageView)findViewById(R.id.iprimera);
         imagen2=(ImageView)findViewById(R.id.isegunda);
         imagen3=(ImageView)findViewById(R.id.itercera);
@@ -68,7 +75,16 @@ public class PromocionesActivity extends NavigationDraActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
         switch (promo){
             case "primero":
-
+                //Base de datos
+                prueba="Salmón Roll";
+                Cursor c=Productosdb.query("Productos",null, "Producto='"+prueba+"'", null,null,null,null);
+                if(c.moveToFirst()){
+                    do {
+                        String prueba1 = c.getString(c.getColumnIndex("Descripcion"));
+                        Toast.makeText(getApplicationContext(), prueba1, Toast.LENGTH_LONG).show();
+                        c.moveToNext();
+                    }while (c.moveToNext());
+                }
                 imagen1.setVisibility(View.VISIBLE);
                 imagen2.setVisibility(View.GONE);
                 imagen3.setVisibility(View.GONE);

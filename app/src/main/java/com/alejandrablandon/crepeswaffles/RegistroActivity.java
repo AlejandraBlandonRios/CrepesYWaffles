@@ -19,15 +19,17 @@ public class RegistroActivity extends AppCompatActivity {
 
     ContactosSQLiteHelper Contactos;
     ContentValues dataBD;
-    SQLiteDatabase dbContactos;
+    SQLiteDatabase Contactosdb;
+    //Base de datos
+    ContactosSQLiteHelper Productos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        Contactos = new ContactosSQLiteHelper(this,"ContactosDB",null,1);
-        dbContactos = Contactos.getWritableDatabase();
+        Contactos = new ContactosSQLiteHelper(this,"AgendaDB",null,1);
+        Contactosdb = Contactos.getWritableDatabase();
 
         eNombre=(EditText)findViewById(R.id.eNombre);
         eContraseña1=(EditText)findViewById(R.id.eContraseña1);
@@ -52,7 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
                     dataBD.put("Nombre",eNombre.getText().toString());
                     dataBD.put("Telefono",eContraseña1.getText().toString());
                     dataBD.put("Correo",eCorreo.getText().toString());
-                    dbContactos.insert("Contactos",null,dataBD);
+                    Contactosdb.insert("Contactos",null,dataBD);
 
                     Intent intent = new Intent();
                     intent.putExtra("usuario", eNombre.getText().toString());

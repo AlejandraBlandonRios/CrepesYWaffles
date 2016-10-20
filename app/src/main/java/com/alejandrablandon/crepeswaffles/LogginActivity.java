@@ -1,5 +1,6 @@
 package com.alejandrablandon.crepeswaffles;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,8 +24,7 @@ public class LogginActivity extends AppCompatActivity {
 
     //Base de datos
     ContactosSQLiteHelper Contactos;
-    SQLiteDatabase db;
-
+    SQLiteDatabase Contactosdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class LogginActivity extends AppCompatActivity {
 
         //Base de datos
         Contactos = new ContactosSQLiteHelper(this,"ContactosDB",null,1);
-        db = Contactos.getWritableDatabase();
+        Contactosdb = Contactos.getWritableDatabase();
 
         eName=(EditText)findViewById(R.id.eName);
         eContraseña=(EditText)findViewById(R.id.eContraseña);
@@ -51,7 +51,7 @@ public class LogginActivity extends AppCompatActivity {
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=Contactosdb.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -98,7 +98,7 @@ public class LogginActivity extends AppCompatActivity {
             });
         } else if(preferencia1.length()!=0 && cerrar=="no"){
             //Base de datos
-            Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+            Cursor c=Contactosdb.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
             //Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
             if(c.moveToFirst()){
                 preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -121,7 +121,7 @@ public class LogginActivity extends AppCompatActivity {
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=Contactosdb.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -169,7 +169,7 @@ public class LogginActivity extends AppCompatActivity {
             bAceptar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     //Base de datos
-                    Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+                    Cursor c=Contactosdb.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
                     if(c.moveToFirst()){
                         do {
                             preferencia1 = c.getString(c.getColumnIndex("Nombre"));
@@ -227,7 +227,7 @@ public class LogginActivity extends AppCompatActivity {
             Log.d("contraseña", contrasena);
             Log.d("correo",correo);
             //Base de datos
-            Cursor c=db.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
+            Cursor c=Contactosdb.query("Contactos",null, "Nombre='"+eName.getText().toString()+"'", null,null,null,null);
             if(c.moveToFirst()){
                 do {
                     preferencia1 = c.getString(c.getColumnIndex("Nombre"));
