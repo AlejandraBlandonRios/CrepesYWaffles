@@ -44,27 +44,14 @@ public class MiPerfilActivity extends NavigationDraActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_navigation_dra2);
 
+        Toast.makeText(getApplicationContext(), "aqui", Toast.LENGTH_LONG).show();
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_mi_perfil, contentFrameLayout);
-
-        tUsuario=(TextView)findViewById(R.id.tUsuario);
-        tContrasena=(TextView)findViewById(R.id.tContrasena);
-        tCorreo=(TextView)findViewById(R.id.tCorreo);
 
         usuario=getIntent().getExtras().getString("usuario");
         contrasena=getIntent().getExtras().getString("contrasena");
         correo=getIntent().getExtras().getString("correo");
         promo = getIntent().getExtras().getString("promo");
-
-        preferencias = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        preferencia1=preferencias.getString("usuario","");
-        preferencia2=preferencias.getString("contrasena","");
-        preferencia3=preferencias.getString("correo","");
-        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
-        
-        tUsuario.setText(preferencia1);
-        tContrasena.setText(preferencia2);
-        tCorreo.setText(preferencia3);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.contenedorPrincipal);
 
@@ -174,15 +161,15 @@ public class MiPerfilActivity extends NavigationDraActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position){
-                case 0: return new FavoritosFragment();
-                case 1: return new MiPerfilFragment();
+                case 0: return new MiPerfilFragment();
+                case 1: return new FavoritosFragment();
                 default: return null;
             }
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
     @Override
