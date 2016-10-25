@@ -35,7 +35,7 @@
     <string name="abierto">Open navigation drawer</string>
     <string name="cerrado">Close navigation drawer</string>
     <string name="Cerrar">Cerrar sesión</string>
-    <string name="Favorito">Favoritos</string>
+    <string name="Favorito">Mis Favoritos</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -59,4 +59,17 @@
     <string name="Texto2Dulce1"> NUTELLA y tajaditas de banano fresco crema chantilly y helado de vainilla old style.</string>
     <string name="Texto1Bebida1"> Choco nutella</string>
     <string name="Texto2Bebida1"> Para los amantes del chocolate un intenso placer dominado por el sabor original de la Nutella.</string>
+
+    <string name="Texto1">Para los amantes de la carne</string>
+    <string name="Texto2">Nuevos sabores en la mañana</string>
+    <string name="Texto3">La hora del helado</string>
+    <string name="Texto4">Disfruta dle mar</string>
+    <string name="Texto5">Una dulce promoción</string>
+    <string name="Texto6">La hora del chocolate</string>
+    <string name="Precio1">$5500</string>
+    <string name="Precio2">$6700</string>
+    <string name="Precio3">$7200</string>
+    <string name="Precio4">$5800</string>
+    <string name="Precio5">$6900</string>
+    <string name="Precio6">$7100</string>
 </resources>
