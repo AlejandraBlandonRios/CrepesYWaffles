@@ -52,13 +52,11 @@ public class FavoritosFragment extends Fragment {
         preferencias = PreferenceManager.getDefaultSharedPreferences(getActivity());
         preferencia1=preferencias.getString("usuario","");
         verpreferencia=preferencias.getString("verfavorito","");
-        Toast.makeText(getContext(), verpreferencia, Toast.LENGTH_LONG).show();
 
         Cursor c3=Favoritosdb.query("Favoritos",null,"idUsuario='"+preferencia1+"'",null,null,null,null);
         if(c3.moveToFirst()){
             do {
                 producto1 = c3.getString(c3.getColumnIndex("idProducto"));
-                Toast.makeText(getContext(), producto1, Toast.LENGTH_LONG).show();
 
                 switch (producto1){
                     case "Crepe de Roastbeef":

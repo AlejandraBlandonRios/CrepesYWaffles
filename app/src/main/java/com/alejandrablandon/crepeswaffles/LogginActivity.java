@@ -45,7 +45,6 @@ public class LogginActivity extends AppCompatActivity {
         preferencia2=preferencias.getString("contrasena","");
         preferencia3=preferencias.getString("correo","");
         cerrar=preferencias.getString("cerrar","");
-        Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
 
         if(preferencia1.length()==0 && cerrar=="no") {
             bAceptar.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +145,7 @@ public class LogginActivity extends AppCompatActivity {
                         editor.putString("usuario",  user);
                         editor.putString("contrasena", contrasena);
                         editor.putString("correo", correo);
-                        editor.putString("cerrar","no");
+                        //editor.putString("cerrar","no");
                         //Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                         editor.commit();
                         Intent intento = new Intent(getApplicationContext(), MainActivity.class);
@@ -194,7 +193,7 @@ public class LogginActivity extends AppCompatActivity {
                         editor.putString("usuario",  user);
                         editor.putString("contrasena", contrasena);
                         editor.putString("correo", correo);
-                        editor.putString("cerrar","no");
+                        editor.putString("cerrar","si");
                         //Toast.makeText(getApplicationContext(), preferencia1, Toast.LENGTH_LONG).show();
                         editor.commit();
 

@@ -137,7 +137,6 @@ public class MainActivity extends NavigationDraActivity{
                         intent.putExtra("correo", correo);
                         intent.putExtra("promo", promo);
                         dataBD2=new ContentValues();
-                        Toast.makeText(getApplicationContext(), "jsjsjsj", Toast.LENGTH_LONG).show();
                         dataBD2.put("Producto","Crepe de Roastbeef");
                         dataBD2.put("Descripcion","Para los amantes de la carne");
                         dataBD2.put("Precio",5500);
@@ -147,7 +146,6 @@ public class MainActivity extends NavigationDraActivity{
                         break;
                     case(1):
                         dataBD2=new ContentValues();
-                        Toast.makeText(getApplicationContext(), "hidjdd", Toast.LENGTH_LONG).show();
                         dataBD2.put("Producto","Bowl de Açaí");
                         dataBD2.put("Descripcion","Nuevos sabores en la mañana");
                         dataBD2.put("Precio",6700);

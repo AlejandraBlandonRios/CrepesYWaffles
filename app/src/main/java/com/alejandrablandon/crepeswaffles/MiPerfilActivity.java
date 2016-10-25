@@ -44,7 +44,6 @@ public class MiPerfilActivity extends NavigationDraActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_navigation_dra2);
 
-        Toast.makeText(getApplicationContext(), "aqui", Toast.LENGTH_LONG).show();
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_mi_perfil, contentFrameLayout);
 

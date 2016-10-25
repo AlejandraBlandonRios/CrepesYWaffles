@@ -40,7 +40,6 @@ public class MiPerfilFragment extends Fragment {
         preferencia1=preferencias.getString("usuario","");
         preferencia2=preferencias.getString("contrasena","");
         preferencia3=preferencias.getString("correo","");
-        Toast.makeText(getContext(), preferencia3, Toast.LENGTH_LONG).show();
 
         tUsuario.setText(preferencia1);
         tContrasena.setText(preferencia2);

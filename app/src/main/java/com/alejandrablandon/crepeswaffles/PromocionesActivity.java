@@ -77,7 +77,6 @@ public class PromocionesActivity extends NavigationDraActivity {
         preferencia1=preferencias.getString("usuario","");
         preferencia2=preferencias.getString("contrasena","");
         preferencia3=preferencias.getString("correo","");
-        Toast.makeText(getApplicationContext(), preferencia3, Toast.LENGTH_LONG).show();
 
         imagen1=(ImageView)findViewById(R.id.iprimera);
         imagen2=(ImageView)findViewById(R.id.isegunda);
@@ -113,7 +112,6 @@ public class PromocionesActivity extends NavigationDraActivity {
                         if(c2.moveToFirst()){
                             do {
                                 String dato11 = c2.getString(c2.getColumnIndex("Descripcion"));
-                                Toast.makeText(getApplicationContext(), dato11, Toast.LENGTH_LONG).show();
                                 c2.moveToNext();
                             }while (c2.moveToNext());
                         }
@@ -138,7 +136,6 @@ public class PromocionesActivity extends NavigationDraActivity {
                         if(c2.moveToFirst()){
                             do {
                                 String dato11 = c2.getString(c2.getColumnIndex("Descripcion"));
-                                Toast.makeText(getApplicationContext(), dato11, Toast.LENGTH_LONG).show();
                                 c2.moveToNext();
                             }while (c2.moveToNext());
                         }
