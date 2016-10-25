@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/navajowhite"
     tools:context="com.alejandrablandon.crepeswaffles.FavoritosFragment">
 
     <ScrollView
@@ -15,7 +16,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/primero">
+            android:id="@+id/primero"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -46,7 +48,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/segundo">
+            android:id="@+id/segundo"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -77,7 +80,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tercero">
+            android:id="@+id/tercero"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -108,7 +112,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cuarto">
+            android:id="@+id/cuarto"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="100dp"
@@ -140,7 +145,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/quinto">
+            android:id="@+id/quinto"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -171,7 +177,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sexto">
+            android:id="@+id/sexto"
+            android:visibility="gone">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"

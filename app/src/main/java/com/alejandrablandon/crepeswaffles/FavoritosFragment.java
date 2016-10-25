@@ -1,11 +1,18 @@
 package com.alejandrablandon.crepeswaffles;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 /**
@@ -15,6 +22,12 @@ public class FavoritosFragment extends Fragment {
 
     LinearLayout primero,segundo,tercero,cuarto,quinto,sexto;
     View myView;
+    SharedPreferences preferencias;
+    String preferencia1,verpreferencia;
+    //Base de datos
+    FavoritosSQLiteHelper Favoritos;
+    SQLiteDatabase Favoritosdb;
+    String producto1;
 
     public FavoritosFragment() {
         // Required empty public constructor
@@ -32,13 +45,44 @@ public class FavoritosFragment extends Fragment {
         quinto=(LinearLayout)myView.findViewById(R.id.quinto);
         sexto=(LinearLayout)myView.findViewById(R.id.sexto);
 
-        primero.setVisibility(View.VISIBLE);
-        segundo.setVisibility(View.GONE);
-        tercero.setVisibility(View.GONE);
-        cuarto.setVisibility(View.GONE);
-        quinto.setVisibility(View.GONE);
-        sexto.setVisibility(View.VISIBLE);
+        //Base de datos
+        Favoritos = new FavoritosSQLiteHelper(getContext(),"FavoritosDB",null,1);
+        Favoritosdb = Favoritos.getWritableDatabase();
 
+        preferencias = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        preferencia1=preferencias.getString("usuario","");
+        verpreferencia=preferencias.getString("verfavorito","");
+        Toast.makeText(getContext(), verpreferencia, Toast.LENGTH_LONG).show();
+
+        Cursor c3=Favoritosdb.query("Favoritos",null,"idUsuario='"+preferencia1+"'",null,null,null,null);
+        if(c3.moveToFirst()){
+            do {
+                producto1 = c3.getString(c3.getColumnIndex("idProducto"));
+                Toast.makeText(getContext(), producto1, Toast.LENGTH_LONG).show();
+
+                switch (producto1){
+                    case "Crepe de Roastbeef":
+                        primero.setVisibility(View.VISIBLE);
+                        break;
+                    case "Bowl de Açaí":
+                        segundo.setVisibility(View.VISIBLE);
+                        break;
+                    case "Helado Tiramisú":
+                        tercero.setVisibility(View.VISIBLE);
+                        break;
+                    case "Salmón Roll":
+                        cuarto.setVisibility(View.VISIBLE);
+                        break;
+                    case "Waffles NUTELLA y Banano":
+                        quinto.setVisibility(View.VISIBLE);
+                        break;
+                    case "Choco NUTELLA":
+                        sexto.setVisibility(View.VISIBLE);
+                        break;
+                }
+                c3.moveToNext();
+            }while (c3.moveToNext());
+        }
         // Inflate the layout for this fragment
         return myView;
     }

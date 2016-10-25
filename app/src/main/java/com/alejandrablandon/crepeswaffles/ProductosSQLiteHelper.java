@@ -4,9 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by USUARIO on 19/10/2016.
- */
 
 public class ProductosSQLiteHelper extends SQLiteOpenHelper {
 
@@ -26,6 +23,7 @@ public class ProductosSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(sqlCreate);
     }
 

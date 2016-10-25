@@ -36,6 +36,8 @@
     <string name="cerrado">Close navigation drawer</string>
     <string name="Cerrar">Cerrar sesión</string>
     <string name="Favorito">Mis Favoritos</string>
+    <string name="SiFavorito">Agregar a Favoritos</string>
+    <string name="NoFavorito">Eliminar de Favoritos</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

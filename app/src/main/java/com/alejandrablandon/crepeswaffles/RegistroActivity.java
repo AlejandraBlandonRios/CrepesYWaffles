@@ -17,11 +17,11 @@ public class RegistroActivity extends AppCompatActivity {
     EditText eNombre, eContraseña1, eContraseña2, eCorreo;
     Button bAceptar,bCancelar;
 
+    //Base de datos
     ContactosSQLiteHelper Contactos;
     ContentValues dataBD;
     SQLiteDatabase Contactosdb;
-    //Base de datos
-    ContactosSQLiteHelper Productos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
